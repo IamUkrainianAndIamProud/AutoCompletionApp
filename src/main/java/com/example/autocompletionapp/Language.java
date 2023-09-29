@@ -6,7 +6,7 @@ public class Language extends Completable {
     private WordsToComplete wordsToComplete = new WordsToComplete();
 
     public Language() {
-        changeLanguage("src/main/resources/Languages/EnglishWords.txt");
+        changeLanguage(Languages.ENG.getPath());
     }
 
     public void changeLanguage(String filePath) {
