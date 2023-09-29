@@ -7,14 +7,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Application {
-    public Stage run(Stage stage, String title, String fxmlPath) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource(fxmlPath));
+public class Application extends javafx.application.Application {
+    @Override
+    public void start(Stage stage) throws Exception {
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 800);
-        stage.setTitle(title);
+        stage.setTitle("TEST");
         stage.setScene(scene);
         stage.show();
-
-        return stage;
     }
 }

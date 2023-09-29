@@ -6,16 +6,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
 
 
-public final class Controller extends javafx.application.Application implements Completable {
+public final class Controller {
     @FXML
     private ComboBox<String> hintsBox;
 
@@ -25,7 +21,7 @@ public final class Controller extends javafx.application.Application implements 
     private String selectedWord;
     private int caretPos;
 
-    private Language english = new Language();
+    private Language language = new Language();
 
 
     @FXML
@@ -34,8 +30,8 @@ public final class Controller extends javafx.application.Application implements 
         ArrayList<String> completionWord = new ArrayList<>();
         String inputWords = mainTextArea.getText(mainTextArea.getText().lastIndexOf(" ") + 1, caretPos);
         System.out.println(inputWords);
-        System.out.println(english.getCompletionWords());
-        for (String word : english.getCompletionWords()) {
+        System.out.println(language.getCompletionWords());
+        for (String word : language.getCompletionWords()) {
             if (word.contains(inputWords)) {
                 if (!completionWord.contains(word)) {
                     completionWord.add(word);
@@ -65,30 +61,6 @@ public final class Controller extends javafx.application.Application implements 
             strBuilder.replace(startIndex, endIndex, " " + selectedWord);
             mainTextArea.setText(String.valueOf(strBuilder));
             mainTextArea.positionCaret(startIndex + selectedWord.length() + 1);
-        }
-    }
-
-    @Override
-    public void start(Stage stage) throws Exception {
-        Application app = new Application();
-
-        setupLanguage(english, "src/main/resources/Languages/EnglishWords.txt");
-
-        app.run(stage, "TEST", "main-view.fxml");
-    }
-
-    @Override
-    public void setupLanguage(Language language, String filePath) {
-        try {
-            File file = new File(filePath);
-            Scanner scanner = new Scanner(file);
-            while (scanner.hasNextLine()) {
-                String word = scanner.nextLine();
-                language.addWords(word);
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("Error!");
-            e.printStackTrace();
         }
     }
 }

@@ -8,6 +8,8 @@ import java.util.List;
 public class WordsToComplete {
     private List<String> completionWords = new ArrayList<>();
 
+
+
     public List<String> addWords(String... words) {
         Collections.addAll(completionWords, words);
 
