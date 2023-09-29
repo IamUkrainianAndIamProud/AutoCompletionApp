@@ -30,8 +30,8 @@ public final class Controller {
         ArrayList<String> completionWord = new ArrayList<>();
         String inputWords = mainTextArea.getText(mainTextArea.getText().lastIndexOf(" ") + 1, caretPos);
         System.out.println(inputWords);
-        System.out.println(language.getCompletionWords());
-        for (String word : language.getCompletionWords()) {
+        System.out.println(language.getWords());
+        for (String word : language.getWords()) {
             if (word.contains(inputWords)) {
                 if (!completionWord.contains(word)) {
                     completionWord.add(word);
