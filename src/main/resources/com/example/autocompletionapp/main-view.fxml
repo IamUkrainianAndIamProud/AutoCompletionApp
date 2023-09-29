@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#writeWord" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.autocompletionapp.Controller">
+    <children>
+        <TextArea fx:id="mainTextArea" layoutX="50.0" layoutY="50.0" onKeyTyped="#onTyped" prefHeight="600.0" prefWidth="900.0" text=" " />
+        <ComboBox fx:id="hintsBox" layoutX="425.0" layoutY="338.0" prefWidth="150.0" visible="false" />
+    </children>
+</Pane>
