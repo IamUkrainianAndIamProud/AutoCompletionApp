@@ -8,16 +8,15 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Language {
-    private List<String> words = new ArrayList<>();
-
+    WordsStorage wordsStorage = new WordsStorage();
+    private String currentLang;
 
     public Language() {
-        changeLanguage(Languages.ENG.getPath());
+        currentLang = Languages.ENG.getPath();
     }
 
-    public void changeLanguage(String filePath) {
-        words.clear();
-        setupLanguage(filePath);
+    public void changeLanguage(Languages selectLang) {
+        currentLang = selectLang.getPath();
     }
 
     public void addWords(String... wordsToAdd) {
@@ -25,20 +24,9 @@ public class Language {
     }
 
     public List<String> getWords() {
-        return words;
+        return wordsStorage.getWordsFromFile(currentLang);
     }
 
     private void setupLanguage(String filePath) {
-        try {
-            File file = new File(filePath);
-            Scanner scanner = new Scanner(file);
-            while (scanner.hasNextLine()) {
-                String word = scanner.nextLine();
-                this.addWords(word);
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("Error!");
-            e.printStackTrace();
-        }
     }
 }
