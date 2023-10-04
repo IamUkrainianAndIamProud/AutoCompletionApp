@@ -9,5 +9,7 @@
     <children>
         <TextArea fx:id="mainTextArea" layoutX="50.0" layoutY="50.0" onKeyTyped="#onTyped" prefHeight="600.0" prefWidth="900.0" text=" " />
         <ComboBox fx:id="hintsBox" layoutX="425.0" layoutY="338.0" prefWidth="150.0" visible="false" />
+        <Button fx:id="english_Button" layoutX="289.0" layoutY="14.0" mnemonicParsing="false" onAction="#changeLanguageToEnglish" text="English" />
+      <Button fx:id="unity_Button" layoutX="202.0" layoutY="14.0" mnemonicParsing="false" onAction="#changeLanguageToUnity" text="UnityC#" />
     </children>
 </Pane>

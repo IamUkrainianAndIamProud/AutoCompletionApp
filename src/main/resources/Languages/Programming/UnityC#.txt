@@ -1,0 +1,14 @@
+class  {}
+MonoBehaviour
+int
+string
+float
+double
+long
+short
+const
+if () {}
+else {}
+else if () {}
+while () {}
+for () {}
