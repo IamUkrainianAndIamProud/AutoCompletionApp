@@ -11,7 +11,7 @@ public class Application extends javafx.application.Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 800);
-        stage.setTitle("TEST");
+        stage.setTitle("Auto Completion!");
         stage.setScene(scene);
         stage.show();
     }

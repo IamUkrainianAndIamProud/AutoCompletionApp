@@ -1,15 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#writeWord" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.autocompletionapp.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#writeWord" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.autocompletionapp.Controller">
     <children>
-        <TextArea fx:id="mainTextArea" layoutX="50.0" layoutY="50.0" onKeyTyped="#onTyped" prefHeight="600.0" prefWidth="900.0" text=" " />
         <ComboBox fx:id="hintsBox" layoutX="425.0" layoutY="338.0" prefWidth="150.0" visible="false" />
-        <Button fx:id="english_Button" layoutX="289.0" layoutY="14.0" mnemonicParsing="false" onAction="#changeLanguageToEnglish" text="English" />
-      <Button fx:id="unity_Button" layoutX="202.0" layoutY="14.0" mnemonicParsing="false" onAction="#changeLanguageToUnity" text="UnityC#" />
+      <TextField fx:id="fileName_TextField" alignment="CENTER" layoutX="369.0" layoutY="7.0" onKeyReleased="#setFileName" promptText="File name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <MenuButton layoutY="2.0" mnemonicParsing="false" text="Operations">
+        <items>
+            <RadioMenuItem mnemonicParsing="false" onAction="#changeLanguageToEnglish" selected="true" text="English">
+               <toggleGroup>
+                  <ToggleGroup fx:id="language" />
+               </toggleGroup>
+            </RadioMenuItem>
+            <RadioMenuItem mnemonicParsing="false" onAction="#changeLanguageToUnity" text="UnityC#" toggleGroup="$language" />
+        </items>
+      </MenuButton>
+      <Text fx:id="language_Text" layoutX="143.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="English">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <TabPane layoutY="46.0" prefHeight="650.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="tab0" onSelectionChanged="#setMainTab" text="Main Tab">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="textArea_Tab0" prefHeight="620.0" prefWidth="1000.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="tab1" onSelectionChanged="#setMainTab" text="Additional Tab">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="textArea_Tab1" prefHeight="622.0" prefWidth="1000.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
     </children>
 </Pane>
